@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>registration</title>
+<style type="text/css">
+body{
+ y   background-image: url("4.jpg");
+    background-repeat: no-repeat;
+    background-size:50%;
+    }
+.a
+{
+color:blue;
+}
+</style>
+</head>
+<body>
+<div  class="first" style="background-color:blue; color:#ffffff; padding:15px;">
+<a href="index.php" style="font-size:20pt; color:#ffffff;">HOME</a>
+</div>	
+<form action="#" name="myform" id="myform" method="get">
+<h1 style="text-align:center; color:maroon;">REGISTRATION FORM</h1>
+<table align="center">
+<tr>
+<td class="a">FIRSTNAME</td>
+<td><input type="text" name="firstname" placeholder="name" required></td>
+</tr>
+<tr>
+<td class="a">LASTNAME</td>
+<td><input type="text" name="lastname"placeholder="Last name" required></td>
+</tr>
+<tr>
+<td class="a">ADDRESS</td>
+<td><textarea name="address" rows="5" cols="15"placeholder="address" required></textarea></td>
+</tr>
+<tr>
+<td class="a">AGE</td>
+<td><input type="text" name="age"placeholder="Age" required></td>
+</tr>
+<tr>
+<td class="a">GENDER</td>
+<td><input type="radio" name="gender" value="male" >Male<input type="radio" name="gender" value="female">Female<input type="radio" name="gender" value="other">Other</td>
+</tr>
+<tr>
+<td class="a">PLACE</td>
+<td><input type="text" name="place" placeholder="place" required></td>
+</tr>
+<tr>
+<td class="a">COUNTRY</td>
+<td><input type="text" name="country"placeholder="Country" required></td>
+</tr>
+<tr>
+<td class="a">PHONE</td>
+<td><input type="tel" name="tel"placeholder="Phone" required></td>
+</tr>
+<tr>
+<td class="a">E-MAIL</td>
+<td><input type="email" name="email"placeholder="Email" required></td>
+</tr>
+<tr>
+<td class="a">DATE</td>
+<td><input type="date" name="date"placeholder="Date" required></td>
+</tr>
+<tr>
+<td class="a">USERNAME</td>
+<td><input type="text" name="username"placeholder="Username" required></td>
+</tr>
+<tr>
+<td  class="a">PASSWORD</td>
+<td><input type="password" name="password"placeholder="Password" required></td>
+</tr>
+<tr>
+<td><td><input type="submit" name="register" value="Register"></td></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
