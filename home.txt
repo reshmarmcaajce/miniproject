@@ -23,7 +23,7 @@ a:hover{
 <h3>Department Of Rural Development,Government Of India</h3>
 </div>
 </body>
-<img src="a.png" alt="Mountain View" style="width:304px;height:228px;">
+<img src="a.jpg" alt="Mountain View" style="width:304px;height:228px;">
 
 <footer style="font-family:lucida calligraphy ;color:teal;font-size:20pt"><marquee><b>copyright@Reshmar,reshmar@mca.ajce.in</b></marquee></footer>
 </html>

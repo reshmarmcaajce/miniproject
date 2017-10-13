@@ -1,53 +1,56 @@
+	
+
+?> 
 <!DOCTYPE html>
 <?php
-include 'dbcon.php';
+include 'connection.php';
 session_start();
 if(isset($_POST['submit']))
 {
 	
-$a=$_POST["uname"];
-$b=$_POST["pwd"];
+$a=$_POST["mail"];
+$b=$_POST["password"];
 }
-//INSERT INTO `tbl_login`(`log_id`, `role_id`, `user_name`, `password`, `status`) VALUES
-$sql="SELECT * FROM `tbl_login`";
+//INSERT INTO `tbl_login`(`uid`, `roleid`, `username`, `password`, `status`) VALUES
+$sql="SELECT * FROM `login`";
 $result=mysqli_query($con,$sql);
 while($row=mysqli_fetch_array($result))
 {
-	$i=$row['log_id'];
-	echo($row['log_id']);
+	$i=$row['uid'];
+	echo($row['uid']);
 	?>
 	
 	<?php 
-	if($a==$row['user_name']&&$b==$row['password']&&$row['role_id']==1)
+	if($a==$row['username']&&$b==$row['password']&&$row['roleid']==1)
 	     {
-		 $_SESSION['user_name']=$a;
+		 $_SESSION['username']=$a;
 		 $_SESSION['passsword']=$b;
-		 $_SESSION['role_name']='admin';
-		 $_SESSION['log_id']=$i;
+		 $_SESSION['roletpe']='admin';
+		 $_SESSION['uid']=$i;
 		 
-		 $sql1="UPDATE `tbl_login` SET `status`='1' WHERE log_id=$i";
+		 $sql1="UPDATE `login` SET `status`='1' WHERE uid=$i";
          $result=mysqli_query($con,$sql1);
 		 header('location:adminhome.php');
 		 }
-	else if($a==$row['user_name']&&$b==$row['password']&&$row['role_id']==2)	 
+	else if($a==$row['username']&&$b==$row['password']&&$row['roleid']==2)	 
 		 {
-		 $_SESSION['user_name']=$a;
+		 $_SESSION['username']=$a;
 		 $_SESSION['passsword']=$b;
-		 $_SESSION['role_name']='admin';
-		 $_SESSION['log_id']=$i; 
+		 $_SESSION['roletpe']='admin';
+		 $_SESSION['uid']=$i; 
 		 
-		 $sql1="UPDATE `tbl_login` SET `status`='1' WHERE log_id=$i";
+		 $sql1="UPDATE `login` SET `status`='1' WHERE uid=$i";
          $result=mysqli_query($con,$sql1);
 		 header('location:stafflogin.php');
 		 }
-		 else if($a==$row['user_name']&&$b==$row['password']&&$row['role_id']==3)	 
+		 else if($a==$row['username']&&$b==$row['password']&&$row['uid']==3)	 
 		 {
-		 $_SESSION['user_name']=$a;
+		 $_SESSION['username']=$a;
 		 $_SESSION['passsword']=$b;
-		 $_SESSION['role_name']='admin';
-		 $_SESSION['log_id']=$i;
+		 $_SESSION['roletpe']='admin';
+		 $_SESSION['uid']=$i;
 		 
-		 $sql1="UPDATE `tbl_login` SET `status`='1' WHERE log_id=$i";
+		 $sql1="UPDATE `login` SET `status`='1' WHERE log_id=$i";
          $result=mysqli_query($con,$sql1);
 		 header('location:memberlogin.php');
 		 }
@@ -60,10 +63,9 @@ while($row=mysqli_fetch_array($result))
 	<?php
 }
 echo "<script>if(confirm('Username and Password are incorect!!!!')){document.location.href='login.php'}else{document.location.href='index.php'};</script>";
-	
+?>
 
-?> 
-
+?>
 <html>
 <head>
 <style>
@@ -198,6 +200,60 @@ security and public works programme in the world".The World Bank termed it a "st
 </td>
 </tr>
 </table>
-
+<?php
+            if(isset($_POST["submit"])){
+                $u_id= htmlspecialchars($_POST['mail']);
+                $p=htmlspecialchars($_POST['password']);
+                echo $u_id;
+				echo $p;
+                
+                $sql3=mysqli_query($con,"SELECT  * FROM `login` where username='$u_id' and password='$p' ");
+                if($row= mysqli_fetch_array($sql3)){
+                    $_SESSION['u_id']=$u_id;
+					$_SESSION['role_type']=$row['role_type'];
+					//echo $_SESSION['role_type'];
+                    //$_SESSION['utype']=$row['utype'];
+                    //$sql4=mysqli_query($con,"SELECT  * FROM `user` where uname=$uname");
+                    //$row1= mysqli_fetch_array($sql4);
+                    //if($row1['status']==2){
+                        //echo "<script> alert('Waiting for Admin Approval')</script>";
+                    //}
+                    //else{
+						if($_SESSION['role_type']==1){
+					?>
+							<script>
+								window.location="adminhome.php";
+							</script>
+					<?php
+						}
+						else if($_SESSION['role_type']==2){
+					?>
+							<script>
+								window.location="matehome.php";
+							</script>
+					<?php
+						}
+						else{
+					?>		
+							<script>
+								window.location="userhome.php";
+							</script>
+							<?php
+						}
+					
+        ?>
+                        <script>
+				window.location="userhome.php";
+			</script>
+        <?php
+                //}
+                }
+                else{
+                    echo "<script> alert('Invalid username/Password')</script>";
+                }
+                }
+        ?>
+    
 </body>
 </html>
+
